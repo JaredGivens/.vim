@@ -34,6 +34,7 @@ nnoremap <leader>rg :Rg<CR>
 
 " LSP settings
 function! s:on_lsp_buffer_enabled() abort
+    let g:lsp_diagnostics_virtual_text_enabled = 0
     setlocal omnifunc=lsp#complete
     setlocal signcolumn=yes
     nmap <buffer> gd <plug>(lsp-definition)
@@ -81,11 +82,17 @@ hi Identifier ctermfg=14
 hi Function ctermfg=15
 hi Type ctermfg=4
 hi PreProc ctermfg=13
+hi LspErrorHighlight cterm=underline ctermul=1
+hi LspWarningHighlight cterm=underline ctermfg=3
+hi LspInformationHighlight ctermfg=6
+hi LspErrorText ctermbg=None ctermfg=1
+hi LspWarningText ctermbg=None ctermfg=3
 hi GitGutterAdd cterm=bold ctermfg=2 ctermbg=None guibg=Grey
 hi GitGutterChange cterm=bold ctermfg=3 ctermbg=None guibg=Grey
 hi GitGutterDelete cterm=bold ctermfg=1 ctermbg=None  guifg=Blue guibg=Grey
 hi SignColumn ctermbg=NONE
 hi Constant ctermfg=13
+hi PreProc ctermfg=13
 hi LineNr ctermfg=6
 hi Statement ctermfg=11
 hi Comment ctermfg=6
