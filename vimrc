@@ -30,6 +30,7 @@ nnoremap <leader>ff :Files<CR>
 nnoremap <leader>fg :GFiles<CR>
 nnoremap <leader>fb :Buffers<CR>
 nnoremap <leader>fh :History<CR>
+nnoremap <leader>rg :Rg<CR>
 
 " LSP settings
 function! s:on_lsp_buffer_enabled() abort
