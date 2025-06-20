@@ -23,11 +23,13 @@ Plug 'tpope/vim-dispatch'
 
 call plug#end()
 
+let mapleader = " "
+
 " FZF key bindings
-nnoremap <C-p> :Files<CR>
-nnoremap <C-g> :GFiles<CR>
-nnoremap <leader>b :Buffers<CR>
-nnoremap <leader>h :History<CR>
+nnoremap <leader>ff :Files<CR>
+nnoremap <leader>fg :GFiles<CR>
+nnoremap <leader>fb :Buffers<CR>
+nnoremap <leader>fh :History<CR>
 
 " LSP settings
 function! s:on_lsp_buffer_enabled() abort
@@ -48,8 +50,13 @@ augroup lsp_install
     au User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
 
+if executable('rg')
+        set grepprg=rg\ --vimgrep\ --smart-case\ --follow
+endif
+
 " Basic settings
 syntax enable
+set notermguicolors
 set number
 set relativenumber
 set incsearch
@@ -64,9 +71,8 @@ set list
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
-set lcs=tab:>-,trail:-,space:.
+set listchars=tab:>-,trail:-,space:.
 
-set notermguicolors
 hi NonText ctermfg=0
 hi ColorColumn cterm=None ctermbg=0
 hi String ctermfg=10
@@ -74,15 +80,14 @@ hi Identifier ctermfg=14
 hi Function ctermfg=15
 hi Type ctermfg=4
 hi PreProc ctermfg=13
-hi DiffAdd cterm=bold ctermfg=2 ctermbg=None
-hi! link Added DiffAdd
-hi DiffChange cterm=bold ctermfg=3 ctermbg=None
-hi! link Changed DiffChange
-hi DiffDelete cterm=bold ctermfg=1 ctermbg=None
-hi! link Removed DiffDelete
+hi GitGutterAdd cterm=bold ctermfg=2 ctermbg=None guibg=Grey
+hi GitGutterChange cterm=bold ctermfg=3 ctermbg=None guibg=Grey
+hi GitGutterDelete cterm=bold ctermfg=1 ctermbg=None  guifg=Blue guibg=Grey
+hi SignColumn ctermbg=NONE
 hi Constant ctermfg=13
 hi LineNr ctermfg=6
 hi Statement ctermfg=11
 hi Comment ctermfg=6
 hi Special ctermfg=None
+hi SpecialKey ctermfg=0
 hi Pmenu None
